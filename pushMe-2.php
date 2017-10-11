@@ -17,6 +17,7 @@ $message = 'MICHOI_M_CLOUDTALK_';
 $ctx = stream_context_create();
 stream_context_set_option($ctx, 'ssl', 'local_cert', 'ck.pem');
 stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
+stream_context_set_option($ctx, 'ssl', 'verify_peer', false);
 
 // Open a connection to the APNS server
 $fp = stream_socket_client('ssl://gateway.sandbox.push.apple.com:2195', $err,$errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
